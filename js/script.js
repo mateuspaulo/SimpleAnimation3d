@@ -1,17 +1,19 @@
 "use strict";
 
-window.onload = function() {
+function animateElements() {
+	const elements = document.getElementsByClassName("generic");
+	while (elements.length > 0) elements[0].remove();
 
-	let time   		   = 0.5;  //Time of animation
-	let numberElements = 1000; //Number of Elements 1000 is recommended
-	let width  		   = 1;    //Initial width
-    let height 		   = 1;    //Initial height
-    let transparency   = "80"; //Max 99. Empty is solid
-    let borderRadius   = 20;   //Ex. 50
-    let colorHex       = "";   //Ex:#ff0000 if empty is entered a random value
+	let time   		   = parseInt(document.getElementById("time").value);  //Time of animation
+	let numberElements = document.getElementById("numberElements").value; //Number of Elements 1000 is recommended
+	let width  		   = parseInt(document.getElementById("width").value);    //Initial width
+    let height 		   = parseInt(document.getElementById("height").value);    //Initial height
+    let transparency   = String(document.getElementById("transparency").value); //Max 99. Empty is solid
+    let borderRadius   = document.getElementById("borderRadius").value;   //Ex. 50
+    let colorHex       = document.getElementById("colorHex").value;   //Ex:#ff0000 if empty is entered a random value
     let style          = "";
 
-	for (var i = 0; i < numberElements; i++) {
+   	for (var i = 0; i < numberElements; i++) {
 		style = 'style="background-color:' + getRandomColor(colorHex) + transparency + '; border-radius:' + borderRadius + '%; animation: round_round ' + time + 's linear infinite; z-index:' + numberElements + '; transform-origin: ' + i + '% ' + i + 'px; width: ' + width + 'px; height:' + height + 'px;"';
 		
 		document.body.innerHTML += '<div ' + style + ' class="generic"></div>';
